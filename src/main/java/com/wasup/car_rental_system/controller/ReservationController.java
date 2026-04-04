@@ -3,6 +3,7 @@ package com.wasup.car_rental_system.controller;
 import com.wasup.car_rental_system.dto.ReservationRequest;
 import com.wasup.car_rental_system.dto.ReservationResponse;
 import com.wasup.car_rental_system.service.ReservationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @PostMapping
-    public ResponseEntity<ReservationResponse> createReservation(@RequestBody ReservationRequest request) {
+    public ResponseEntity<ReservationResponse> createReservation(@Valid @RequestBody ReservationRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(reservationService.createReservation(request));
     }

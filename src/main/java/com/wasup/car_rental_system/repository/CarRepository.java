@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, String> {
     List<Car> findByType(CarType type);
+    List<Car> findByTenantId(String tenantId);
+    List<Car> findByTypeAndTenantId(CarType type, String tenantId);
 }

@@ -12,7 +12,9 @@ public record ReservationResponse(
         CarType carType,
         String customerName,
         LocalDateTime startDateTime,
-        int numberOfDays
+        int numberOfDays,
+        String tenantId,
+        String tenantName
 ) {
     public static ReservationResponse fromEntity(Reservation reservation) {
         return new ReservationResponse(
@@ -22,7 +24,9 @@ public record ReservationResponse(
                 reservation.getCarType(),
                 reservation.getCustomerName(),
                 reservation.getStartDateTime(),
-                reservation.getNumberOfDays()
+                reservation.getNumberOfDays(),
+                reservation.getTenant().getId(),
+                reservation.getTenant().getName()
         );
     }
 }
